@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[fReturnsLines] (
+    [GUIDEreturns] NVARCHAR (255)   NOT NULL,
+    [line_id]      NVARCHAR (255)   NULL,
+    [guid]         NVARCHAR (255)   NULL,
+    [item_id]      NVARCHAR (255)   NULL,
+    [item_ext_id]  NVARCHAR (255)   NULL,
+    [manuf_date]   DATE             NULL,
+    [expir_date]   DATE             NULL,
+    [item_name]    NVARCHAR (255)   NULL,
+    [quantity]     DECIMAL (20, 10) NULL,
+    [barcode]      NVARCHAR (255)   NULL,
+    [price]        DECIMAL (20, 10) NULL,
+    [amount]       DECIMAL (20, 10) NULL,
+    [lot_number]   NVARCHAR (255)   NULL
+);
+

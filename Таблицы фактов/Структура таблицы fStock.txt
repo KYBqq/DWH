@@ -1,0 +1,6 @@
+CREATE TABLE [dbo].[fStock] (
+    [id]    NVARCHAR (255) NOT NULL,
+    [name]  NVARCHAR (255) NULL,
+    [count] NVARCHAR (255) NULL
+);
+
