@@ -1,0 +1,36 @@
+--Звездообразное соединение fMovegoo: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Date.
+
+CREATE VIEW zvezdaFMovegooPlusManuals AS 
+SELECT 
+fm_id,
+fm_src_warehouse_id as CodeskladA,
+fm_dst_warehouse_id as CodeskadB,
+GP.mManufactures as Manufactures,
+NULLIF(GP.attribute5, '') AS GoodGroups,
+GP.ggName as GoodGroupsDopInfo,
+GP.name as Goods,
+fm_amount as AllMoveAmount,
+fm_status,
+fm_status_name,
+d.FullDateTime as DocDate,
+d2.FullDateTime as AcceptandSendandDraftDate,
+d.Year as DocYear,
+d2.Year as AcceptandSendandDraftYear,
+d.Month as DocMonth,
+d2.Month as AcceptandSendandDraftMonth,
+d.Day as DocDay, 
+d2.Day as AcceptandSendandDraftDay, 
+NULLIF(fm_comment, '') as fm_comment,
+fml_line_id,
+fml_item_id,
+fml_quantity,
+fml_price,
+fml_amount as LineMoveAmount,
+NULLIF(fml_lot_number, '') as fml_lot_number
+FROM fMovegoo
+LEFT JOIN GoodsPlusMplusGG GP
+ON fml_item_id = GP.id
+LEFT JOIN Date d
+ON fm_created_date = d.FullDateTime
+LEFT JOIN Date d2
+ON fm_last_update_date = d2.FullDateTime

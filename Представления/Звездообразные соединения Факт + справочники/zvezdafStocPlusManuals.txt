@@ -1,0 +1,22 @@
+--- Звездообразное соединение: fStoc: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Stores.
+
+
+CREATE VIEW zvezdafStocPlusManuals AS 
+SELECT 
+fs_id,
+S.location_name as location,
+S.name as Cslad, 
+GP.mManufactures as Manufactures,
+GP.attribute5 as GoodGroups, 
+GP.ggName as GoodGroupsDopInfo,
+GP.name as Goods, 
+fs_count,
+fsl_stock_id,	
+fsl_quantity,	
+NULLIF(fsl_lot_number, '') as fsl_lot_number,
+fsl_cogs
+FROM fStoc
+LEFT JOIN Stores S
+ON fs_id = S.id
+LEFT JOIN GoodsPlusMplusGG GP
+ON fsl_id = GP.id

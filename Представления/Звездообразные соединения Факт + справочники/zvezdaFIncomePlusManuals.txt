@@ -1,0 +1,55 @@
+-- Звездообразное-соединение: fIncom: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Suppliers, Date.
+CREATE VIEW zvezdaFIncomePlusManuals AS 
+    SELECT 
+        fi_id as idfInco,
+        S.id as idSupp,
+	    GP.mID as idManu,
+	    GP.id as idGG,
+	    GP.ggID as idGGDI,
+        GP.id as idG,
+		dDoc.DateID as idDateNdoc,
+		dAcc.DateID as idDateNacc,
+		dDoc.DateID as idYearDoc,
+		dAcc.DateID as idYearAcc, 
+		dDoc.DateID as idMonthDoc,
+		dAcc.DateID as idMonthAcc,
+		dDoc.DateID as idDayDoc,
+		dAcc.DateID as idDayAcc,
+        fi_warehouse_id as idSklad,
+        S.type_name as type_Suppliers,
+        S.name as Suppliers,
+        GP.mManufactures as Manufactures,
+	    NULLIF(GP.attribute5, '') AS GoodGroups,
+        GP.ggName as GoodGroupsDopInfo,
+        GP.name AS Goods,
+        fi_docdate,
+		fi_accept_date,
+        fi_status,
+        NULLIF(fi_comment, '') as fi_comment,
+        fi_amount,
+        NULLIF(fi_factura_invoice_num, '') as fi_factura_invoice_num,
+        fil_line_id,
+        NULLIF(fil_onhand_id, '') as fil_onhand_id,
+        fil_quantity,
+        fil_quantity_expected,
+        fil_price,
+        fil_amount,
+        fil_vat_rate,
+        fil_vat_sum,
+        fil_sum_minus_vat,
+        NULLIF(fil_lot_number, '') as fil_lot_number,
+        NULLIF(fi_waybill, '') as fi_waybill,
+        GP.ggNotShowInShop as NotShowInShop,
+        fi_supplier_readonly_inflow
+    FROM fIncom 
+    LEFT JOIN GoodsPlusMplusGG GP 
+    ON fil_item_id = GP.id
+
+    LEFT JOIN Suppliers s
+    ON fi_supplier_id = s.id
+
+	LEFT JOIN Date dDoc
+	ON fi_docdate = dDoc.FullDateTime
+
+	LEFT JOIN Date dAcc
+	ON fi_accept_date = dAcc.FullDateTime
