@@ -1,0 +1,16 @@
+CREATE VIEW fStoc AS
+SELECT 
+    s.id AS fs_id,
+    s.name AS fs_name,
+    s.count AS fs_count,
+    sl.id AS fsl_id,
+    sl.stock_id AS fsl_stock_id,
+    sl.quantity AS fsl_quantity,
+    sl.lot_number AS fsl_lot_number,
+    sl.cogs AS fsl_cogs
+FROM 
+    [dbo].[fStock] s
+LEFT JOIN 
+    [dbo].[fStockLines] sl
+ON 
+    s.id = sl.stock_id;
