@@ -30,11 +30,11 @@ BEGIN
             last_update_by
         )
         SELECT
-            movegood.value('(id)[1]', 'NVARCHAR(255)'),
-            movegood.value('(src_warehouse_id)[1]', 'NVARCHAR(255)'),
-            movegood.value('(src_warehouse_ext_id)[1]', 'NVARCHAR(255)'),
-            movegood.value('(dst_warehouse_id)[1]', 'NVARCHAR(255)'),
-            movegood.value('(dst_warehouse_ext_id)[1]', 'NVARCHAR(255)'),
+            TRY_CONVERT(INT, movegood.value('(id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, movegood.value('(src_warehouse_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT,movegood.value('(src_warehouse_ext_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, movegood.value('(dst_warehouse_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, movegood.value('(dst_warehouse_ext_id)[1]', 'NVARCHAR(255)')),
             TRY_CAST(movegood.value('(amount)[1]', 'NVARCHAR(255)') AS DECIMAL(18, 2)),
             movegood.value('(status)[1]', 'NVARCHAR(255)'),
             movegood.value('(status_name)[1]', 'NVARCHAR(255)'),
@@ -61,10 +61,10 @@ BEGIN
             lot_number
         )
         SELECT
-            movegood.value('(id)[1]', 'NVARCHAR(255)'),
-            item.value('(line_id)[1]', 'NVARCHAR(255)'),
-            item.value('(item_id)[1]', 'NVARCHAR(255)'),
-            item.value('(item_ext_id)[1]', 'NVARCHAR(255)'),
+            TRY_CONVERT(INT, movegood.value('(id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, item.value('(line_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, item.value('(item_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, item.value('(item_ext_id)[1]', 'NVARCHAR(255)')),
             item.value('(item_name)[1]', 'NVARCHAR(255)'),
             TRY_CAST(item.value('(quantity)[1]', 'NVARCHAR(255)') AS DECIMAL(20, 10)),
             item.value('(barcode)[1]', 'NVARCHAR(255)'),
