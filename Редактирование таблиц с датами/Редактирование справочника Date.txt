@@ -1,2 +1,0 @@
-UPDATE [dbo].[Date] 
-SET DateID_Nvarchar = CAST(DateID AS NVARCHAR(255));
