@@ -1,4 +1,4 @@
---Звездообразное соединение fMovegoo: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Date.
+--Звездообразное соединение fMovegoo: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Date, Stores.
 
 CREATE VIEW zvezdaFMovegooPlusManuals AS 
 SELECT 
@@ -7,6 +7,8 @@ GP.mID as idManu,
 GP.id as idGG,
 GP.ggID as idGGDI,
 GP.id as idG,
+S1.id as idSkladA,
+S2.id as idSkadB,
 fm_src_warehouse_id as CodeskladA,
 fm_dst_warehouse_id as CodeskadB,
 GP.mManufactures as Manufactures,
@@ -34,3 +36,7 @@ LEFT JOIN Date d
 ON fm_created_date = d.FullDateTime
 LEFT JOIN Date d2
 ON fm_last_update_date = d2.FullDateTime
+LEFT JOIN Stores S1
+ON fm_src_warehouse_id = S1.id
+LEFT JOIN Stores S2
+ON fm_dst_warehouse_id = S2.id

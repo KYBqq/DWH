@@ -1,11 +1,11 @@
 CREATE TABLE [dbo].[Stores] (
-    [id]                 NVARCHAR (255) NOT NULL,
-    [headquerter_id]     NVARCHAR (255) NULL,
-    [location_id]        NVARCHAR (255) NULL,
-    [external_id]        NVARCHAR (255) NULL,
-    [organisation_id]    NVARCHAR (255) NULL,
-    [manager_user_id]    NVARCHAR (255) NULL,
-    [main_store_id]      NVARCHAR (255) NULL,
+    [id]                 INT NOT NULL,
+    [headquerter_id]     INT NULL,
+    [location_id]        INT NULL,
+    [external_id]        INT NULL,
+    [organisation_id]    INT NULL,
+    [manager_user_id]    INT NULL,
+    [main_store_id]      INT NULL,
     [open_time]          TIME (7)       NULL,
     [close_time]         TIME (7)       NULL,
     [created_date]       DATETIME       NULL,
@@ -38,6 +38,6 @@ CREATE TABLE [dbo].[Stores] (
     [attribute15]        NVARCHAR (255) NULL,
     [vat_mandatory_flag] NVARCHAR (255) NULL,
     [primarybase]        NVARCHAR (255) NULL,
-    [location_name]      NVARCHAR (255) NULL,
+    [location_name]      NVARCHAR (255) NULL
 );
 

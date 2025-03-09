@@ -60,13 +60,13 @@ BEGIN
             location_name
         )
         SELECT 
-            warehouses.value('(id)[1]', 'NVARCHAR(255)'),  
-            warehouses.value('(headquerter_id)[1]', 'NVARCHAR(255)'),
-            warehouses.value('(location_id)[1]', 'NVARCHAR(255)'),
-            warehouses.value('(external_id)[1]', 'NVARCHAR(255)'),
-            warehouses.value('(organisation_id)[1]', 'NVARCHAR(255)'),
-            warehouses.value('(manager_user_id)[1]', 'NVARCHAR(255)'),
-            warehouses.value('(main_store_id)[1]', 'NVARCHAR(255)'),
+            TRY_CONVERT(INT, warehouses.value('(id)[1]', 'NVARCHAR(255)')),  
+            TRY_CONVERT(INT, warehouses.value('(headquerter_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouses.value('(location_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouses.value('(external_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouses.value('(organisation_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouses.value('(manager_user_id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouses.value('(main_store_id)[1]', 'NVARCHAR(255)')),
             TRY_CONVERT(TIME, warehouses.value('(open_time)[1]', 'NVARCHAR(30)'), 120),
             TRY_CONVERT(TIME, warehouses.value('(close_time)[1]', 'NVARCHAR(30)'), 120),
             TRY_CONVERT(DATETIME, warehouses.value('(created_date)[1]', 'NVARCHAR(255)'), 120),
