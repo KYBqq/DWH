@@ -18,9 +18,9 @@ BEGIN
             id, name, count
         )
         SELECT
-            warehouse.value('(id)[1]', 'NVARCHAR(255)'),
+            TRY_CONVERT(INT, warehouse.value('(id)[1]', 'NVARCHAR(255)')),
             warehouse.value('(name)[1]', 'NVARCHAR(255)'),
-            warehouse.value('(count)[1]', 'NVARCHAR(255)')
+            TRY_CONVERT(DECIMAL, warehouse.value('(count)[1]', 'NVARCHAR(255)'))
         FROM @xmlData.nodes('/root/warehouses/warehouse') AS warehouse(warehouse);
 
         -- Вставка данных в таблицу fStockLines (строки товаров), добавляем stock_id из fStock
@@ -28,8 +28,8 @@ BEGIN
             id, stock_id, quantity, lot_number, cogs
         )
         SELECT
-            item.value('(id)[1]', 'NVARCHAR(255)'),
-            warehouse.value('(id)[1]', 'NVARCHAR(255)'), -- stock_id из fStock
+            TRY_CONVERT(INT, item.value('(id)[1]', 'NVARCHAR(255)')),
+            TRY_CONVERT(INT, warehouse.value('(id)[1]', 'NVARCHAR(255)')), -- stock_id из fStock
             TRY_CAST(item.value('(quantity)[1]', 'NVARCHAR(255)') AS DECIMAL(20, 10)),
             item.value('(lot_number)[1]', 'NVARCHAR(255)'),
             TRY_CAST(item.value('(cogs)[1]', 'NVARCHAR(255)') AS DECIMAL(20, 10))
