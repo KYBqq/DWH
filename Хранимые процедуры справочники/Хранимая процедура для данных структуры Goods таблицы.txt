@@ -55,8 +55,8 @@ BEGIN
         )
         SELECT 
             TRY_CONVERT(INT, items.value('(id)[1]', 'NVARCHAR(50)')),                        
-            TRY_CONVERT(INT, items.value('(external_id)[1]', 'NVARCHAR(50)')),      
-            TRY_CONVERT(INT, LTRIM(RTRIM(CAST(split_ids.value AS NVARCHAR(100))))),       
+            TRY_CONVERT(INT, items.value('(external_id)[1]', 'NVARCHAR(50)')),
+			TRY_CONVERT(INT, LTRIM(RTRIM(CAST(split_ids.value AS NVARCHAR(100))))),     
             TRY_CONVERT(INT, items.value('(group_ext_ids)[1]', 'NVARCHAR(100)')),   
             TRY_CONVERT(INT, items.value('(manufacturer_id)[1]', 'NVARCHAR(100)')),          
             items.value('(html_template_id)[1]', 'NVARCHAR(50)'), 
@@ -90,7 +90,6 @@ BEGIN
             items.value('(attribute15)[1]', 'NVARCHAR(50)')       
         FROM @xmlData.nodes('/root/items/item') AS XMLData(items)
 		CROSS APPLY STRING_SPLIT(items.value('(group_ids)[1]', 'NVARCHAR(100)'), ',') AS split_ids;
-
         -- Логирование успешной загрузки
         PRINT 'Данные успешно загружены.';
     END TRY
@@ -105,3 +104,5 @@ BEGIN
         PRINT 'Ошибка в процедуре: ' + ERROR_PROCEDURE();
     END CATCH
 END;
+
+--items.value('(group_ids)[1]', 'NVARCHAR(100)'), - обычная загрузка без сплита.  
