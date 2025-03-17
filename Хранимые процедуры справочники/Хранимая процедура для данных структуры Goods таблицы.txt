@@ -56,7 +56,7 @@ BEGIN
         SELECT 
             TRY_CONVERT(INT, items.value('(id)[1]', 'NVARCHAR(50)')),                        
             TRY_CONVERT(INT, items.value('(external_id)[1]', 'NVARCHAR(50)')),
-			TRY_CONVERT(INT, LTRIM(RTRIM(CAST(split_ids.value AS NVARCHAR(100))))),     
+			TRY_CONVERT(INT, LTRIM(RTRIM(CAST(split_ids.value AS NVARCHAR(100))))), 
             TRY_CONVERT(INT, items.value('(group_ext_ids)[1]', 'NVARCHAR(100)')),   
             TRY_CONVERT(INT, items.value('(manufacturer_id)[1]', 'NVARCHAR(100)')),          
             items.value('(html_template_id)[1]', 'NVARCHAR(50)'), 
@@ -105,4 +105,6 @@ BEGIN
     END CATCH
 END;
 
---items.value('(group_ids)[1]', 'NVARCHAR(100)'), - обычная загрузка без сплита.  
+-- items.value('(group_ids)[1]', 'NVARCHAR(100)'), - обычная загрузка. 
+--TRY_CONVERT(INT, LTRIM(RTRIM(CAST(split_ids.value AS NVARCHAR(100))))), - загрузка со сплитом. 
+--CROSS APPLY STRING_SPLIT(items.value('(group_ids)[1]', 'NVARCHAR(100)'), ',') AS split_ids; - cплит.
