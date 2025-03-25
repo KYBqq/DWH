@@ -21,7 +21,7 @@ SELECT
     f.fsl_quantity,	
     NULLIF(f.fsl_lot_number, '') AS fsl_lot_number,
     f.fsl_cogs,
-    COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам. 
+    --COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам. 
 FROM fStoc f
 
 OUTER APPLY (

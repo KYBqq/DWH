@@ -66,6 +66,7 @@ SELECT
     fil.vat_rate AS fil_vat_rate, 
     fil.vat_sum AS fil_vat_sum, 
     fil.sum_minus_vat AS fil_sum_minus_vat
+--COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам.
 FROM  
     [dbo].[fIncome] fi
 LEFT JOIN 
