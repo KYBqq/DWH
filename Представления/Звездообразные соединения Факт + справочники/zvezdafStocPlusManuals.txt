@@ -1,29 +1,39 @@
 --- Звездообразное соединение: fStoc: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Stores.
 
-
 CREATE VIEW zvezdafStocPlusManuals AS 
 SELECT 
-fs_id,
-S.id as idloc,
-S.id as idStores,
-S.name as Stores,
-GP.mID as idManu,
-fsl_id as idG,
-GP.id as idGG,
-GP.ggID as idGGDOPINFO,
-GP.mManufactures as Manufactures,
-GP.attribute5 as GoodGroups,
-GP.ggName as GoodGroupsDopInfo,
-GP.name as Goods, 
-S.location_name as location,
-fs_id as idlotnumber,
-fs_count,
-fsl_stock_id,	
-fsl_quantity,	
-NULLIF(fsl_lot_number, '') as fsl_lot_number,
-fsl_cogs
-FROM fStoc
-LEFT JOIN Stores S
-ON fs_id = S.id
-LEFT JOIN GoodsPlusMplusGG GP
-ON fsl_id = GP.id
+    f.fs_id,
+    S.id AS idloc,
+    S.id AS idStores,
+    S.name AS Stores,
+    GP.mID AS idManu,
+    f.fsl_id AS idG,
+    GP.id AS idGG,
+    GP.ggID AS idGGDOPINFO,
+    GP.mManufactures AS Manufactures,
+    GP.attribute5 AS GoodGroups,
+    GP.ggName AS GoodGroupsDopInfo,
+    GP.name AS Goods, 
+    S.location_name AS location,
+    f.fs_id AS idlotnumber,
+    f.fs_count,
+    f.fsl_stock_id,	
+    f.fsl_quantity,	
+    NULLIF(f.fsl_lot_number, '') AS fsl_lot_number,
+    f.fsl_cogs,
+    COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам. 
+FROM fStoc f
+
+OUTER APPLY (
+    SELECT TOP 1 * 
+    FROM Stores S
+    WHERE f.fs_id = S.id
+    ORDER BY S.id
+) S
+
+OUTER APPLY (
+    SELECT TOP 1 * 
+    FROM GoodsPlusMplusGG GP
+    WHERE f.fsl_id = GP.id
+    ORDER BY GP.id
+) GP;
