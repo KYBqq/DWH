@@ -24,7 +24,8 @@ SELECT
     fml.amount AS fml_amount, 
     fml.manuf_date AS fml_manuf_date, 
     fml.expir_date AS fml_expir_date, 
-    fml.lot_number AS fml_lot_number
+    fml.lot_number AS fml_lot_number,
+COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
 FROM  
     [dbo].[fMovegood] fm
 LEFT JOIN 

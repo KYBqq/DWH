@@ -40,8 +40,8 @@ CREATE VIEW zvezdaFIncomePlusManuals AS
         NULLIF(fi.fil_lot_number, '') AS fil_lot_number,
         NULLIF(fi.fi_waybill, '') AS fi_waybill,
         GP.ggNotShowInShop AS NotShowInShop,
-        fi.fi_supplier_readonly_inflow
-        --COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
+        fi.fi_supplier_readonly_inflow,
+COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
     FROM fIncom fi
 
     -- Используем OUTER APPLY для выбора только одной строки из каждого справочника

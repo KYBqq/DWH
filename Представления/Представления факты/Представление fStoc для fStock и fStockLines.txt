@@ -7,8 +7,8 @@ SELECT
     sl.stock_id AS fsl_stock_id,
     sl.quantity AS fsl_quantity,
     sl.lot_number AS fsl_lot_number,
-    sl.cogs AS fsl_cogs
---COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам.
+    sl.cogs AS fsl_cogs,
+COUNT(*) OVER() AS СheckDoubles -- индикатор дублей по строкам.
 FROM 
     [dbo].[fStock] s
 LEFT JOIN 

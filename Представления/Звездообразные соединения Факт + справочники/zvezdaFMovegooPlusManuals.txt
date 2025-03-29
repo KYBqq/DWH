@@ -28,8 +28,8 @@ fml_item_id,
 fml_quantity,
 fml_price,
 fml_amount as LineMoveAmount,
-NULLIF(fml_lot_number, '') as fml_lot_number
---COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
+NULLIF(fml_lot_number, '') as fml_lot_number,
+COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
 FROM fMovegoo
 
 OUTER APPLY (
