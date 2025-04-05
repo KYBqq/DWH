@@ -14,3 +14,10 @@ SUM(amount) as fIncomeLinesAmount,
 SUM(price) as fIncomeLinesPrice,
 SUM(quantity) as fIncomeLinesQuantity
 FROM fIncomeLines
+
+--SELECT 
+--FROM fIncomeLines
+--WHERE item_name = ' ГРЕБЕНЬ ПЕДИКУЛИЦИДНЫЙ МИРРОЛЛА'
+
+--SELECT *
+--FROM fIncomeLines
