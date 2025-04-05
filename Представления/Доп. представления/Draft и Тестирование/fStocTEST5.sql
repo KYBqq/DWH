@@ -1,4 +1,4 @@
-CREATE VIEW fStoc AS
+﻿CREATE VIEW fStocTEST5 AS
 WITH cte AS (
     SELECT 
         s.id AS fs_id,
