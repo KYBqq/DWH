@@ -1,4 +1,4 @@
-CREATE VIEW fReceipt AS
+﻿CREATE VIEW fReceiptTEST5 AS
 WITH cte AS (
 SELECT 
     r.receipt_id AS r_receipt_id, 

@@ -1,6 +1,6 @@
 --Звездообразное-соединение: fReceipt: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Date.
 
-CREATE VIEW zvezdafReceiptPlusManuals AS
+CREATE VIEW zvezdafReceiptPlusManualsTEST5 AS
 SELECT  
 r_terminalid,  
 r_warehouseid,  
