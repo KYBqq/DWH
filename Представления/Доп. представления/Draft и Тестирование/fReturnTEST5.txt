@@ -1,4 +1,4 @@
-CREATE VIEW fReturn AS
+CREATE VIEW fReturnTEST5 AS
 WITH cte AS (
     SELECT  
     fr.id AS fr_id, 
