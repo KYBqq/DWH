@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[fReceiptsLines] (
-    [line_id]     NVARCHAR (255)   NOT NULL,
-    [receipt_id]  NVARCHAR (255)   NOT NULL,
-    [itemid]      NVARCHAR (255)   NULL,
+    [line_id]     UNIQUEIDENTIFIER NOT NULL,
+    [receipt_id]  UNIQUEIDENTIFIER NOT NULL,
+    [itemid]      INT NULL,
     [quantity]    DECIMAL (20, 10) NULL,
     [pricebase]   DECIMAL (20, 10) NULL,
     [pricesale]   DECIMAL (20, 10) NULL,
@@ -9,9 +9,8 @@ CREATE TABLE [dbo].[fReceiptsLines] (
     [amount]      DECIMAL (20, 10) NULL,
     [barcode]     NVARCHAR (255)   NULL,
     [cogs]        DECIMAL (20, 10) NULL,
-    [users_id]    NVARCHAR (255)   NULL,
+    [users_id]    INT NULL,
     [vat_applied] DECIMAL (20, 10) NULL,
     [vat_amount]  DECIMAL (20, 10) NULL,
-    [onhand_id]   NVARCHAR (255)   NULL
+    [onhand_id]   INT NULL
 );
-
