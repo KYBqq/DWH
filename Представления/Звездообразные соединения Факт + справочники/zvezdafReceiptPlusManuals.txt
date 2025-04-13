@@ -1,10 +1,20 @@
 --Звездообразное-соединение: fReceipt: GoodsPlusMplusGG (Goods, GoodGroups, Manufactures), Date.
 
 CREATE VIEW zvezdafReceiptPlusManuals AS
-SELECT  
+SELECT
+r_receipt_id,
 r_terminalid,  
 r_warehouseid,  
-r_users_id,  
+r_users_id,
+d.DateID as idSellDateTime,
+d.DateID as idSellDate,
+d.DateID as idSellYear,
+d.DateID as idSellMonth,
+d.DateID as idSellDay,
+GP.mID as idManufactures,
+GP.id as idGoodGroups,
+GP.ggID as idGoodGroupsDopInfo,
+GP.id as idGoods,
 r_marker,
 r_terminal_description as Cassa,
 d.FullDateTime as SellDateTime,
@@ -41,8 +51,8 @@ rl_amount,
 rl_cogs,  
 rl_vat_applied,  
 rl_vat_amount,  
-rl_onhand_id,
-COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
+rl_onhand_id
+--COUNT(*) OVER() AS СheckDoubles -- индикатор дублей. 
 FROM fReceipt
 
  -- Используем OUTER APPLY для выбора только одной строки из каждого справочника
