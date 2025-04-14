@@ -48,14 +48,12 @@ OUTER APPLY (
         SELECT TOP 1 * 
         FROM GoodsPlusMplusGG GP 
         WHERE frl_item_id = GP.id
-        ORDER BY GP.id -- или другой критерий сортировки
     ) GP
 
 OUTER APPLY (
         SELECT TOP 1 * 
         FROM Suppliers S 
         WHERE fr_supplier_id = S.id
-        ORDER BY S.id -- или другой критерий сортировки
     ) S
 
 OUTER APPLY (
