@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[fReceipts] (
+CREATE TABLE [dbo].[fReceipts] (
     [receipt_id]                 UNIQUEIDENTIFIER NOT NULL,
     [terminalid]                 BIGINT  NULL,
     [warehouseid]                INT NULL,
